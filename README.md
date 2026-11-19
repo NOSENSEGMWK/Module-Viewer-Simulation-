@@ -6,15 +6,16 @@
 
 <p align="center">
   <b>Lihat, bedah, dan simulasikan module root tanpa memasangnya.</b><br>
-  Versi <b>1.0.0</b> · codename <b>R</b> · Android &amp; Windows
+  Versi <b>1.0.0</b> · codename <b>R</b> · Android &amp; Windows · 🌐 Indonesia / English
 </p>
 
 <p align="center">
-  <a href="../../releases/latest">⬇️ Unduh</a> ·
+  <a href="https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest">⬇️ Unduh</a> ·
   <a href="#fitur">Fitur</a> ·
   <a href="#cara-pakai">Cara pakai</a> ·
   <a href="#versi-windows-100-w">Windows</a> ·
-  <a href="#batasan--catatan">Batasan</a>
+  <a href="#batasan--catatan">Batasan</a> ·
+  <a href="README.en.md">🇬🇧 English</a>
 </p>
 
 <p align="center">
@@ -22,12 +23,6 @@
 </p>
 
 ---
-
-> **English (short):** Module Viewer Simulation (MVS) lets you inspect and safely simulate Magisk / KernelSU / APatch
-> modules **without installing them**. It shows the install flow, browses files, runs a static security analysis,
-> reads native ELF binaries, opens the module's WebUI against a fake `ksu` API, and runs boot scripts and daemons
-> inside an in-memory mini shell on a simulated Android device (MediaTek Helio G99 or Snapdragon 695 beta).
-> Nothing from the module is ever executed on your device or PC. Available for Android and Windows.
 
 ## Tentang
 
@@ -37,8 +32,9 @@ module sebelum memasangnya sungguhan. Semua skrip module hanya berjalan di mini-
 
 - ✅ **Tidak butuh root**
 - ✅ **Tidak ada yang dijalankan di perangkat/komputermu**: module hanya diekstrak ke penyimpanan privat aplikasi
-- ✅ **Tanpa internet**: WebUI module berjalan dengan jaringan diblokir
+- ✅ **Tanpa internet**: aplikasi tidak punya akses internet sendiri, dan WebUI module berjalan dengan jaringan diblokir
 - ✅ **Tanpa dependensi luar**: UI dan simulator murni HTML/JavaScript di dalam WebView
+- ✅ **Dua bahasa**: Bahasa Indonesia dan English, bisa diganti kapan saja di Pengaturan
 
 ## Fitur
 
@@ -46,8 +42,9 @@ module sebelum memasangnya sungguhan. Semua skrip module hanya berjalan di mini-
 | Fitur | Keterangan |
 |---|---|
 | **Pilih module `.zip`** | Mendukung format module Magisk / KernelSU / APatch (butuh `module.prop`). Ukuran zip maksimal 350 MB, dengan perlindungan *zip-slip* dan batas ukuran hasil ekstrak. |
-| **Kartu informasi** | Nama, versi, pengembang, deskripsi, ukuran, jumlah file, dan penanda **WebUI**. |
-| **Proses instalasi (simulasi)** | Menampilkan log bergaya terminal KSU: `ui_print`/`echo` dari `customize.sh` ikut tampil, perintah lain ditandai `[SIM]`, dan baris berbahaya diberi label tingkat risiko. Tidak ada yang benar-benar dijalankan. |
+| **Kartu informasi** | Nama, versi, pengembang, deskripsi, banner, ukuran, jumlah file, dan penanda **WEBUI** / **AKSI**. |
+| **Tombol Aksi** | Module yang punya `action.sh` mendapat tombol **Aksi** di sebelah kiri tombol WebUI, seperti di manajer root. Skripnya dijalankan di simulator dengan keluaran bergaya terminal dan kode keluar. |
+| **Proses instalasi (simulasi)** | Log bergaya terminal KSU: `ui_print`/`echo` dari `customize.sh` ikut tampil, perintah lain ditandai `[SIM]`, dan baris berbahaya diberi label tingkat risiko. Tidak ada yang benar-benar dijalankan. |
 | **Lihat isi** | Pohon file lengkap + penampil teks bernomor baris. File biner ditandai, ELF bisa dibuka di analyzer. |
 | **Ikon APK** | File `.apk` di dalam module tampil dengan ikon dan label tersendiri. |
 
@@ -68,8 +65,9 @@ Pembaca file **ELF** untuk binary di dalam module (ARM64, ARM32, x86, x86-64), l
 
 ### 🌐 WebUI module
 WebUI bawaan module dibuka **di dalam aplikasi** dengan API `ksu.*` palsu:
-`exec` / `spawn` (disimulasikan oleh mini-shell), `listPackages`, `getPackagesInfo`, **ikon aplikasi** (`ksu://icon/<paket>`, `getPackagesIcons`),
-`moduleInfo`, `toast`, `fullScreen`. Jaringan diblokir. Tombol **←** di pojok kiri atas untuk kembali.
+`exec` / `spawn` (disimulasikan oleh mini-shell), `moduleInfo`, `toast`, `fullScreen`, serta API aplikasi terpasang ala KernelSU:
+`listPackages`, `listUserPackages`, `listSystemPackages`, `listAllPackages`, `getPackagesInfo`, `getPackagesIcons`, dan ikon aplikasi lewat `ksu://icon/<paket>`.
+Jaringan diblokir. Tombol **←** di pojok kiri atas untuk kembali.
 
 ### 📱 Simulasi Android
 Perangkat palsu dengan nilai yang bisa **dibaca dan ditulis** lewat `/sys` dan `/proc` virtual, termasuk CPU (cluster, governor, frekuensi), GPU, thermal, baterai, memori, properti sistem, dan perintah `dumpsys` / `getprop` / `settings`.
@@ -91,20 +89,24 @@ Bisa memilih root manager yang disimulasikan (**KernelSU / Magisk / APatch**), n
 - Kontrol: kecepatan waktu 1x/10x/60x/600x, lompat waktu, jeda, reboot, log per proses, riwayat proses yang sudah keluar, logcat, peringatan *busy-loop*
 - Bisa dimatikan lewat pengaturan **Simulasikan daemon?**
 
+### 🌍 Bahasa & pembaruan
+- **Bahasa Indonesia / English** di Pengaturan, berlaku langsung di seluruh aplikasi (UI, hasil analisis, log instalasi, layar daemon, dan Native Binary Analyzer). Nama, deskripsi, isi file, dan keluaran skrip milik module sengaja tidak diterjemahkan.
+- **Cek pembaruan**: Pengaturan memuat tombol yang membuka [halaman proyek](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-) dan [rilis terbaru](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest) di browser. Aplikasi sendiri tidak terhubung ke internet.
+
 ## Cara pakai
 
 ### Android
-1. Unduh APK terbaru dari halaman **[Releases](../../releases/latest)** lalu pasang (Android 8.0 / API 26 ke atas; izinkan pemasangan dari sumber ini bila diminta).
+1. Unduh APK terbaru dari halaman **[Releases](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest)** lalu pasang (Android 8.0 / API 26 ke atas; izinkan pemasangan dari sumber ini bila diminta).
 2. Buka aplikasi → **Pilih module** → pilih file `.zip` module.
-3. Gunakan tombol **Lihat isi**, **Proses instalasi**, **Hasil analisis**, **Simulasi daemon**, dan **Buka** (WebUI).
-4. Ikon ⚙️ di pojok kanan atas untuk pengaturan (chipset, root manager, simulasi daemon, nama perangkat).
+3. Gunakan tombol **Lihat isi**, **Proses instalasi**, **Hasil analisis**, **Simulasi daemon**, **Aksi** (bila ada `action.sh`), dan **Buka** (WebUI).
+4. Ikon ⚙️ di pojok kanan atas untuk pengaturan (bahasa, chipset, root manager, simulasi daemon, nama perangkat, cek pembaruan).
 
 ### Versi Windows 1.0.0 (W)
-Tersedia di **[Releases](../../releases/latest)** sebagai `ModuleViewerSim_Windows_1.0.0-W.zip`.
+Tersedia di **[Releases](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest)** sebagai `ModuleViewerSim_Windows_1.0.0-W.zip`.
 
 1. Ekstrak zip, klik dua kali `ModuleViewerSim.exe` (terbuka lewat Microsoft Edge mode aplikasi). Bila `.exe` diblokir antivirus, buka `ModuleViewerSim.html` langsung di Edge/Chrome. Isinya sama.
 2. Tekan **Pilih module** (atau `Ctrl+O`), atau **seret file `.zip`** ke jendela.
-3. Tampilan mengikuti ukuran jendela. Pintasan: `Esc` / `Alt+←` / tombol mouse "mundur" untuk kembali.
+3. Tampilan mengikuti ukuran jendela (minimum 420 × 520). Pintasan: `Esc` / `Alt+←` / tombol mouse "mundur" untuk kembali.
 
 Syarat: Windows 10/11 64-bit, Microsoft Edge atau Google Chrome terbaru. `.exe` belum ditandatangani penerbit, jadi SmartScreen mungkin menampilkan peringatan ("More info" → "Run anyway").
 
@@ -115,6 +117,7 @@ Syarat: Windows 10/11 64-bit, Microsoft Edge atau Google Chrome terbaru. `.exe` 
 - **Snapdragon 695 dan simulasi daemon masih BETA**: tabel frekuensi/level dan sebagian node adalah perkiraan yang masuk akal, bukan dump dari perangkat asli. Laporan bug sangat membantu.
 - **Binary ELF native tidak dieksekusi.** Binary yang dijalankan di latar belakang hanya muncul sebagai proses dengan label "ELF native".
 - **Ikon aplikasi di WebUI bersifat generik** (huruf + warna per paket), bukan logo asli aplikasi.
+- **Terjemahan English** dibuat dengan mencocokkan teks yang tampil dengan kamus; teks yang belum ada di kamus tetap tampil dalam Bahasa Indonesia. Koreksi terjemahan sangat diterima.
 - Di Windows, WebUI module yang dipecah menjadi banyak file ES-module (`import './x.js'`) mungkin tidak berjalan; WebUI satu file / satu bundle berjalan normal.
 
 ## Dibangun dengan
