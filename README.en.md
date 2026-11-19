@@ -104,7 +104,7 @@ You can choose the simulated root manager (**KernelSU / Magisk / APatch**), the 
 ### Windows edition 1.0.0 (W)
 Available in **[Releases](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest)** as `ModuleViewerSim_Windows_1.0.0-W.zip`.
 
-1. Extract the zip and double-click `ModuleViewerSim.exe` (it opens through Microsoft Edge in app mode). If antivirus blocks the `.exe`, open `ModuleViewerSim.html` directly in Edge/Chrome. It is the same app.
+1. double-click `ModuleViewerSim.exe` (it opens through Microsoft Edge in app mode).
 2. Press **Select Module** (or `Ctrl+O`), or **drag a `.zip` file** onto the window.
 3. The layout follows the window size (minimum 420 × 520). Shortcuts: `Esc` / `Alt+←` / the mouse "back" button to go back.
 
