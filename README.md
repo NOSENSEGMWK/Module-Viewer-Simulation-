@@ -102,9 +102,9 @@ Bisa memilih root manager yang disimulasikan (**KernelSU / Magisk / APatch**), n
 4. Ikon ⚙️ di pojok kanan atas untuk pengaturan (bahasa, chipset, root manager, simulasi daemon, nama perangkat, cek pembaruan).
 
 ### Versi Windows 1.0.0 (W)
-Tersedia di **[Releases](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest)** sebagai `ModuleViewerSim_Windows_1.0.0-W.zip`.
+Tersedia di **[Releases](https://github.com/NOSENSEGMWK/Module-Viewer-Simulation-/releases/latest)** sebagai `ModuleViewerSim_Windows_1.0.0-W.exe`.
 
-1. Ekstrak zip, klik dua kali `ModuleViewerSim.exe` (terbuka lewat Microsoft Edge mode aplikasi). Bila `.exe` diblokir antivirus, buka `ModuleViewerSim.html` langsung di Edge/Chrome. Isinya sama.
+1. klik dua kali `ModuleViewerSim.exe` (terbuka lewat Microsoft Edge mode aplikasi).
 2. Tekan **Pilih module** (atau `Ctrl+O`), atau **seret file `.zip`** ke jendela.
 3. Tampilan mengikuti ukuran jendela (minimum 420 × 520). Pintasan: `Esc` / `Alt+←` / tombol mouse "mundur" untuk kembali.
 
